@@ -17,10 +17,18 @@
             }
         }
 
+        public static function checkSession(){
+            self::init();
+            if(self::get("adminlogin") == false){
+                self::destroy();
+                header("Location:login.php");
+            }
+        }
+
         public static function checkLogin(){
             self::init(); // Here i stat this session with init method
             if(self::get("adminlogin") == true){
-                header("Location:login.php");
+                header("Location:dashbord.php");
             }
         }
 
