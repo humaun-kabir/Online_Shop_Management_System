@@ -1,5 +1,14 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../classes/Category.php'; // Include Category Class ?>
+
+<?php
+
+	$cat = new Category(); // Create Object for Category Class and take this with one variable as $cat
+
+
+?>
+
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
@@ -13,46 +22,23 @@
 						</tr>
 					</thead>
 					<tbody>
+
+					<?php
+					$getCat = $cat->getAllCat(); // with this category object i access this method getAllCat() 
+					if($getCat){ // if condition start from here 
+						$i = 0;
+						while($result = $getCat->fetch_assoc()){ // while loop start from here.
+						$i++;
+						
+					?>
 						<tr class="odd gradeX">
-							<td>01</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
+							<td><?php echo $i; ?></td>
+							<td><?php echo $result['catName']; ?></td>
+							<td><a href="catedit.php?catid=<?php echo $result['catId']; ?>">Edit</a> || <a href="">Delete</a></td>
 						</tr>
-						<tr class="even gradeC">
-							<td>02</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>03</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>04</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-							<tr class="odd gradeX">
-							<td>05</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>06</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>07</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>08</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
+						
+						<?php } }  // Close if condition and while loop. ?>
+						
 					</tbody>
 				</table>
                </div>
