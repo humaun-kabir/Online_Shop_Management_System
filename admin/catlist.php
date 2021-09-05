@@ -5,14 +5,24 @@
 <?php
 
 	$cat = new Category(); // Create Object for Category Class and take this with one variable as $cat
-
+	if(isset($_GET['delcat'])){
+		$id = $_GET['delcat']; // get this delcat Id and take this on $id variable 
+		$delCat = $cat->delCatById($id); //With Category class object i access method with id  
+	}
 
 ?>
 
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
-                <div class="block">        
+                <div class="block"> 
+					
+				<?php
+				if(isset($delCat)){
+					echo $delCat;
+				}
+
+				?>
                     <table class="data display datatable" id="example">
 					<thead>
 						<tr>
@@ -34,7 +44,8 @@
 						<tr class="odd gradeX">
 							<td><?php echo $i; ?></td>
 							<td><?php echo $result['catName']; ?></td>
-							<td><a href="catedit.php?catid=<?php echo $result['catId']; ?>">Edit</a> || <a href="">Delete</a></td>
+							<td><a href="catedit.php?catid=<?php echo $result['catId']; ?>">Edit</a> ||
+							 <a onclick="return confirm('Are you sure to delete')" href="?delcat=<?php echo $result['catId']; ?>">Delete</a></td>
 						</tr>
 						
 						<?php } }  // Close if condition and while loop. ?>
