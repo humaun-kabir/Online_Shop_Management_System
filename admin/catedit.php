@@ -17,7 +17,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $catName = $_POST['catName']; // here i add our input filed name 
 
-        $insertCat = $cat->catInsert($catName); // with this Category object i access one method. 
+        $updateCat = $cat->catUpdate($catName,$id); // with this Category object i access one method. 
     }
 
 
@@ -29,8 +29,8 @@
                 <h2>Update Category</h2>
                <div class="block copyblock"> 
                 <?php
-                if(isset($insertCat)){ // showing this return $msg
-                    echo $insertCat;
+                if(isset($updateCat)){ // showing this return $msg
+                    echo $updateCat;
                 }
 
                 ?>
