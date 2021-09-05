@@ -20,7 +20,7 @@
         public static function checkSession(){
             self::init();
             if(self::get("adminlogin") == false){
-                self::destroy();
+                self::destroy(); // I added this when is will false then its will be apply selt::destroy method
                 header("Location:login.php");
             }
         }

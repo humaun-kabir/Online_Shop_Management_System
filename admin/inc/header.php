@@ -1,6 +1,6 @@
 <?php
-    include '../lib/Session.php';
-    Session::checkSession();
+    include '../lib/Session.php';  // include our Session.php page 
+    Session::checkSession(); // Added checkSession Method
 
 ?>
 
@@ -60,13 +60,13 @@
                         <ul class="inline-ul floatleft">
 
                         <?php
-                            if(isset($_GET['action']) && $_GET['action'] == "logout"){
-                                Session::destroy();
+                            if(isset($_GET['action']) && $_GET['action'] == "logout"){  // Here i get this logout id 
+                                Session::destroy(); // Here i destroy this Session for login user.
                             }
 
                         ?>
-                            <li>Hello <?php echo Session::get('adminName'); ?></li>
-                            <li><a href="?action=logout">Logout</a></li>
+                            <li>Hello <?php echo Session::get('adminName'); // Here i also show the name of login user ?></li>
+                            <li><a href="?action=logout">Logout</a></li> <?php  // I just pass the logout id from here  ?>
                         
                         
                         </ul>
