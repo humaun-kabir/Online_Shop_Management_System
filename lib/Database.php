@@ -1,7 +1,7 @@
-<?php include '../config/config.php';  ?>
+<?php include_once '../config/config.php'; ?>
 
 <?php
- class Database {
+class Database{
 
 public $host = DB_HOST;
 public $user = DB_USER;
