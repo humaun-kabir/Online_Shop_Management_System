@@ -72,6 +72,18 @@
                 }
             }
         }
+
+        public function delBrandById($id){
+            $query = "DELETE FROM tbl_brand WHERE brandId = '$id' ";
+            $branddeldata = $this->db->delete($query);
+            if($branddeldata){
+                $msg = "<span class='success'>Brand Deleted Succesfully.</span>";
+                return $msg;
+            }else{
+                $msg = "<span class='error'>Brand Not Deleted.</span>";
+                return $msg;
+            }
+        }
     }
 
 ?>

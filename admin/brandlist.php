@@ -5,23 +5,23 @@
 <?php
 
 	$brand = new Brand(); // Create Object for Category Class and take this with one variable as $cat
-	/*
-    if(isset($_GET['delcat'])){
-		$id = $_GET['delcat']; // get this delcat Id and take this on $id variable 
-		$delCat = $cat->delCatById($id); //With Category class object i access method with id  
+	
+    if(isset($_GET['delbrand'])){ // get his delete id from our link 
+		$id = $_GET['delbrand']; // get this delcat Id and take this on $id variable 
+		$delBrand = $brand->delBrandById($id); //With Category class object i access method with id  
 	}
-    */
+    
 
 ?>
 
         <div class="grid_10">
             <div class="box round first grid">
-                <h2>Category List</h2>
+                <h2>Brand List</h2>
                 <div class="block"> 
 					
 				<?php
-				if(isset($delCat)){
-					echo $delCat;
+				if(isset($delBrand)){
+					echo $delBrand;
 				}
 
 				?>
