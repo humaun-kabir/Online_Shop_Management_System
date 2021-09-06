@@ -1,6 +1,6 @@
 <?php
-    include '../lib/Database.php'; // Include Database Class 
-    include '../helpers/Format.php'; // Include Format Class 
+    include_once '../lib/Database.php'; // Include Database Class 
+    include_once '../helpers/Format.php'; // Include Format Class 
 ?>
 
 <?php

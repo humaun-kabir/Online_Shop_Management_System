@@ -1,6 +1,7 @@
 <?php  
     include_once '../lib/Database.php';  
-    include_once '../helpers/Format.php';    
+    include_once '../helpers/Format.php';
+        
 ?>
 
 
@@ -19,6 +20,9 @@
         public function productInsert($data, $file){
             
             $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
+
+            $productName = $this->fm->validation($productName);
+
             $catId = mysqli_real_escape_string($this->db->link, $data['catId']);
             $brandId = mysqli_real_escape_string($this->db->link, $data['brandId']);
             $body = mysqli_real_escape_string($this->db->link, $data['body']);
@@ -57,7 +61,14 @@
         }
 
         public function getAllProduct(){
-            $query = "SELECT * FROM tbl_product ORDER BY productId DESC";
+            $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName 
+                    FROM tbl_product
+                    INNER JOIN tbl_category
+                    ON tbl_product.catId = tbl_category.catId
+                    INNER JOIN tbl_brand
+                    ON tbl_product.brandId = tbl_brand.brandId
+                    ORDER BY tbl_product.productId DESC "; 
+            
             $result = $this->db->select($query);
             return $result;
         }

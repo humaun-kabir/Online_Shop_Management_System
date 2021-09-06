@@ -1,7 +1,7 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
 <?php include '../classes/Product.php'; ?>
-<?php include '../helpers/Format.php'; ?>
+<?php //include '../helpers/Format.php'; ?>
 
 <?php
 	$pd = new Product();
@@ -41,8 +41,8 @@
 				<tr class="odd gradeX">
 					<td><?php echo $i; ?></td>
 					<td><?php echo $fm->textShorten($result['productName'], 15); ?></td>
-					<td><?php echo $result['catId']; ?></td>
-					<td><?php echo $result['brandId']; ?></td>
+					<td><?php echo $result['catName']; ?></td>
+					<td><?php echo $result['brandName']; ?></td>
 					<td><?php echo $fm->textShorten($result['body'], 30); ?></td>
 					<td><?php echo $result['price']; ?></td>
 					<td><img src="<?php echo $result['image'];?>" height="40px" width="60px"></td>
