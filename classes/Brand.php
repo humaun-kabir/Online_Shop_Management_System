@@ -41,6 +41,37 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        public function getUpdateById($id){
+            $query = "SELECT * FROM tbl_brand WHERE brandId = '$id' ";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function brandUpdate($brandName,$id){
+            $brandName = $this->fm->validation($brandName); // Validation for special Characters             
+            $brandName = mysqli_real_escape_string($this->db->link, $brandName); // Validation for mysqli   
+            $id = mysqli_real_escape_string($this->db->link, $id);
+            
+            if(empty($brandName)){
+                $msg = "<span class='error'>Brand field must not be empty.</span>"; // validation for empty 
+                return $msg;
+            }else{
+                $query = "UPDATE tbl_brand
+                SET 
+                brandName = '$brandName'
+                WHERE brandId = '$id' ";
+
+                $update_row = $this->db->update($query);
+                if($update_row){
+                    $msg = "<span class='success'>Brand Updated Succesfully.</span>";
+                    return $msg;
+                }else{
+                    $msg = "<span class='error'>Brand Not Updated.</span>";
+                    return $msg;
+                }
+            }
+        }
     }
 
 ?>
