@@ -64,7 +64,7 @@
 							</tr>
 							<tr>
 								<th>Grand Total :</th>
-								<td>
+								<td>$
 									<?php
 										$vat = $sum * 0.1;
 										$gtotal = $sum + $vat;
