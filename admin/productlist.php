@@ -1,20 +1,31 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
 <?php include '../classes/Product.php'; ?>
-<?php //include '../helpers/Format.php'; ?>
+<?php //include_once '../helpers/Format.php'; ?>
 
 <?php
 	$pd = new Product();
 	$fm = new Format();
+?>
 
-
-
+<?php
+	if(isset($_GET['delpro'])){
+		$id = $_GET['delpro']; // get this delcat Id and take this on $id variable 
+		$delpro = $pd->delProById($id); //With Category class object i access method with id  
+	}
 ?>
 
 <div class="grid_10">
     <div class="box round first grid">
-        <h2>Post List</h2>
+        <h2>Product List</h2>
         <div class="block">  
+
+		<?php
+			if(isset($delpro)){
+				echo $delpro;
+			}
+		?>
+
             <table class="data display datatable" id="example">
 			<thead>
 				<tr>
@@ -57,7 +68,8 @@
 					?></td>
 					<td>
 						<a href="productedit.php?proid=<?php echo $result['productId']; ?>">Edit</a> ||
-						<a onclick="return confirm('Are you sure to delete')" href="?delpro=<?php echo $result['productId']; ?>">Delete</a>
+						<a onclick="return confirm('Are you sure to delete')" 
+						href="?delpro=<?php echo $result['productId']; ?>">Delete</a>
 					</td>
 				</tr>
 
