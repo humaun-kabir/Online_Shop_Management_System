@@ -1,6 +1,8 @@
-<?php
-    include_once '../lib/Database.php'; // Include Database Class 
-    include_once '../helpers/Format.php'; // Include Format Class 
+<?php  
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/Database.php');
+    include_once ($filepath.'/../helpers/Format.php');
+        
 ?>
 
 <?php
