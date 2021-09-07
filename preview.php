@@ -11,14 +11,11 @@
 
 <?php
     
-    /*
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $brandName = $_POST['brandName']; // here i add our input filed name 
+        $quantity = $_POST['quantity']; // here i add our input filed name 
 
-        $updateBrand = $brand->brandUpdate($brandName,$id); // with this Category object i access one method. 
+        $addCart = $ct->addToCart($quantity,$id); // with this Category object i access one method. 
     }
-	*/
-
 
 ?>
 
@@ -45,9 +42,9 @@
 						<p>Brand:<span><?php echo $result['brandName']; ?></span></p>
 					</div>
 				<div class="add-cart">
-					<form action="cart.html" method="post">
-						<input type="number" class="buyfield" name="" value="1"/>
-						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
+					<form action="" method="post">
+						<input type="number" class="buyfield" name="quantity" value="1"/>
+						<input type="submit" class="buysubmit" name="submit" value="Add to Cart"/>
 					</form>				
 				</div>
 			</div>
