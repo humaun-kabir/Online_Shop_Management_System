@@ -78,6 +78,90 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        public function productUpdate($data, $file, $id){
+            $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
+
+            //$productName = $this->fm->validation($productName);
+
+            $catId = mysqli_real_escape_string($this->db->link, $data['catId']);
+            $brandId = mysqli_real_escape_string($this->db->link, $data['brandId']);
+            $body = mysqli_real_escape_string($this->db->link, $data['body']);
+            $price = mysqli_real_escape_string($this->db->link, $data['price']);
+            $type = mysqli_real_escape_string($this->db->link, $data['type']);
+            
+            $permited = array('jpg','png','jpeg','gif');
+            $file_name = $file['image']['name'];
+            $file_size = $file['image']['size'];
+            $file_temp = $file['image']['tmp_name'];
+
+            $div = explode('.',$file_name);
+            $file_ext = strtolower(end($div));
+            $unique_image = substr(md5(time()),0,10).'.'.$file_ext;
+            $uploaded_image = "upload/".$unique_image;
+
+            if($productName == '' || $catId == '' || $brandId == '' || $body == '' || $price == '' || $type == '' ){
+                $msg = "<span class='error'>Field must not be empty.</span>";
+                    return $msg;
+            }else{
+            
+            if(!empty($file_name)){
+
+            
+            if($file_size > 1054589){
+                echo "<span class='error'>Image size should be 1MB</span>";
+            }elseif(in_array($file_ext, $permited) === false){
+                echo "<span class='error'>You can Upload only".implode(',', $permited)."</span>";
+            }else{
+                    move_uploaded_file($file_temp, $uploaded_image );
+                
+                    $query = "UPDATE tbl_product
+                    SET
+                    productName = '$productName',
+                    catId = '$catId',
+                    brandId = '$brandId',
+                    body = '$body',
+                    price = '$price',
+                    image = '$$uploaded_image',
+                    type = '$type'
+                    WHERE productId = '$id'
+                    ";
+                    $updated_row = $this->db->update($query);
+                    if($updated_row){
+                        $msg = "<span class='success'>Product updated Succesfully.</span>";
+                        return $msg;
+                    }else{
+                        $msg = "<span class='error'>Product Not updated.</span>";
+                        return $msg;
+                    }
+                }
+            
+            }else{
+                $query = "UPDATE tbl_product
+                SET
+                productName = '$productName',
+                catId = '$catId',
+                brandId = '$brandId',
+                body = '$body',
+                price = '$price',
+                image = '$$uploaded_image',
+                type = '$type'
+                WHERE productId = '$id'
+                ";
+                $updated_row = $this->db->update($query);
+                if($updated_row){
+                    $msg = "<span class='success'>Product updated Succesfully.</span>";
+                    return $msg;
+                }else{
+                    $msg = "<span class='error'>Product Not updated.</span>";
+                    return $msg;
+                }
+
+            }
+        }
     }
+    
+}
+
 
 ?>

@@ -31,6 +31,12 @@
             }
         ?>
 
+        <?php 
+        if (isset($updateProduct)) {
+        echo $updateProduct;
+        }
+        ?>
+
         <?php
             $getProd = $pd->getProById($id);
             if($getProd){
