@@ -55,6 +55,7 @@
 								if($getPro){
 									$i = 0;
 									$sum = 0;
+									$qty = 0;
 									while($result = $getPro->fetch_assoc()){
 										$i++;
 							?>
@@ -81,11 +82,22 @@
 							</tr>
 
 							<?php
+								$qty = $qty + $result['quantity'];
 								$sum = $sum + $total;
+								Session::set("qty",$qty);
+								Session::set("sum",$sum);
+
 							?>
 							<?php } } ?>
 							
 						</table>
+							<?php 
+								$getData = $ct->checkCartTable();
+								if($getData){
+
+							?>
+
+
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Sub Total : </th>
@@ -108,6 +120,10 @@
 								</td>
 							</tr>
 					   </table>
+
+					   <?php }else{
+						   echo "Cart Empty";
+					   } ?>
 					</div>
 					<div class="shopping">
 						<div class="shopleft">
