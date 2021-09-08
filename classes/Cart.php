@@ -54,6 +54,25 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        public function updateCartQuantity($cartId, $quantity){
+            $cartId = mysqli_real_escape_string($this->db->link, $cartId); // Validation for mysqli   
+            $quantity = mysqli_real_escape_string($this->db->link, $quantity); // Validation for mysqli   
+            
+            $query = "UPDATE tbl_cart
+                SET 
+                quantity = '$quantity'
+                WHERE cartId = '$cartId' ";
+
+                $update_row = $this->db->update($query);
+                if($update_row){
+                    $msg = "<span class='success'>Quantity Updated Succesfully.</span>";
+                    return $msg;
+                }else{
+                    $msg = "<span class='error'>Quantity Not Updated.</span>";
+                    return $msg;
+                }
+        }
     }
 
 ?>
