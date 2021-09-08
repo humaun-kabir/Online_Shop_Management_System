@@ -68,19 +68,17 @@
 				<div class="rightsidebar span_3_of_1">
 					<h2>CATEGORIES</h2>
 					<ul>
-				      <li><a href="productbycat.html">Mobile Phones</a></li>
-				      <li><a href="productbycat.html">Desktop</a></li>
-				      <li><a href="productbycat.html">Laptop</a></li>
-				      <li><a href="productbycat.html">Accessories</a></li>
-				      <li><a href="productbycat.html#">Software</a></li>
-					   <li><a href="productbycat.html">Sports & Fitness</a></li>
-					   <li><a href="productbycat.html">Footwear</a></li>
-					   <li><a href="productbycat.html">Jewellery</a></li>
-					   <li><a href="productbycat.html">Clothing</a></li>
-					   <li><a href="productbycat.html">Home Decor & Kitchen</a></li>
-					   <li><a href="productbycat.html">Beauty & Healthcare</a></li>
-					   <li><a href="productbycat.html">Toys, Kids & Babies</a></li>
-    				</ul>
+
+					<?php 
+						$getCat = $cat->getAllCat(); // Create this method in Category.php class 
+						if ($getCat) {
+						while ($result = $getCat->fetch_assoc()) {
+									
+						?> 
+						<li><a href="productbycat.php?catId=<?php echo $result['catId']; ?>"><?php echo $result['catName']; ?></a></li>
+						<?php }  }  ?> // End of if condition and while loop
+										
+						</ul>
     	
  				</div>
  		</div>
