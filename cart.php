@@ -1,6 +1,14 @@
 <?php include 'inc/header.php'; ?>
 
 <?php
+	if(isset($_GET['delpro'])){
+		$delId = $_GET['delpro'];
+		$delProduct = $ct->delProductByCart($delId);
+	}
+
+?>
+
+<?php
     
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $cartId = $_POST['cartId']; // here i add our input filed name 
@@ -18,6 +26,10 @@
 					<?php
 						if(isset($updateCart)){
 							echo $updateCart;
+						}
+
+						if(isset($delProduct)){
+							echo $delProduct;
 						}
 
 					?>
@@ -60,7 +72,7 @@
 									?>
 
 								</td>
-								<td><a href="">X</a></td>
+								<td><a onclick="return confirm('Are you sure to Delete');" href="?delpro=<?php echo $result['cartId']; ?>">X</a></td>
 							</tr>
 
 							<?php
