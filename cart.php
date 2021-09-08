@@ -14,7 +14,12 @@
         $cartId = $_POST['cartId']; // here i add our input filed name 
 		$quantity = $_POST['quantity'];
         $updateCart = $ct->updateCartQuantity($cartId, $quantity); // with this Category object i access one method. 
-    }
+		
+		if($quantity <= 0){
+			$delProduct = $ct->delProductByCart($cartId);
+
+		}
+	}
 
 ?>
 
