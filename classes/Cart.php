@@ -98,6 +98,8 @@
             $query = "DELETE FROM tbl_cart WHERE sId = '$sId'";
             $this->db->delete($query);
         }
+
+        
     }
 
 ?>
