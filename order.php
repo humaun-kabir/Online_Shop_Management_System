@@ -13,7 +13,7 @@
         <div class="section group">
 
         <div class="notfound">
-            <h2><span>Order Page</span>Not Found</h2>
+            <h2><span>Order Page</span></h2>
 
         </div>
         </div>
