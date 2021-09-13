@@ -1,11 +1,22 @@
 <?php include 'inc/header.php'; ?>
  
- <?php 
+<?php 
   $login =  Session::get("cuslogin");
   if ($login == false) {
   	header("Location:login.php");
   }
-  ?>
+?>
+
+<?php
+    if(isset($_GET['orderid']) && $_GET['orderid'] == 'order'){
+    $cmrId =  Session::get("cmrId");
+    $insertOrder = $ct->orderProduct($cmrId);
+    $delDate = $ct->delCustomerCart();
+    header("Location:success.php");
+
+    }
+
+?>
  
   
 <style>
@@ -152,7 +163,7 @@
  
      </div>
  </div>
-   <div class="ordernow"> <a href=" "> Order </a></div>
+   <div class="ordernow"> <a href="?orderid=order"> Order </a></div>
  
 </div>
    
