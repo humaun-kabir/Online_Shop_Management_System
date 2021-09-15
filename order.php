@@ -49,7 +49,7 @@
 									?>
 
 								</td>
-								<td><?php echo $fm->formateDate($result['date']); ?></td>
+								<td><?php echo $fm->formatDate($result['date']); ?></td>
 								<td>
                                     <?php
                                         if($result['status'] == '0'){
