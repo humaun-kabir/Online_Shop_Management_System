@@ -56,6 +56,11 @@
 				?>
 				</span>
 
+				<div class="add-cart">
+					<a class="buysubmit" href="?wlistid=<?php echo $result['productId']; ?>">Save to List</a> | 
+					<a class="buysubmit" href="?comid=<?php echo $result['productId']; ?>">Add to Compare</a>				
+				</div>
+
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>
