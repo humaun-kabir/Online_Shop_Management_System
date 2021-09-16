@@ -17,6 +17,7 @@
 							<th>Product</th>
 							<th>Quantity</th>
 							<th>Price</th>
+                            <th>Cust Id</th>
 							<th>Address</th>
 							<th>Action</th>
 						</tr>
@@ -38,7 +39,8 @@
 							<td><?php echo $result['productName']; ?></td>
 							<td><?php echo $result['quantity']; ?></td>
 							<td><?php echo $result['price']; ?></td>
-							<td><a href="customer.php?cusId=<?php echo $result['cmrId']; ?>">View Address</a></td>
+							<td><?php echo $result['cmrId']; ?></td>
+							<td><a href="customer.php?custId=<?php echo $result['cmrId']; ?>"> View Address</a></td>
 							<td><a href="">Shifted</a></td>
 						</tr>
 
