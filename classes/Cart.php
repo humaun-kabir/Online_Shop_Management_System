@@ -137,6 +137,24 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        public function productShifted($id,$date,$price){
+            $id =  mysqli_real_escape_string($this->db->link, $id ); 
+            $date =  mysqli_real_escape_string($this->db->link, $date ); 
+            $price =  mysqli_real_escape_string($this->db->link, $price ); 
+            $query = "UPDATE tbl_order
+                          SET
+                          status = '1'
+                          WHERE cmrId = '$id' AND date='$date' AND price='$price'";
+                          $update_row  = $this->db->update($query);
+                          if ($update_row) {
+                             $msg = "<span class='success'>Updated Successfully.</span> ";
+                        return $msg;  // return this message 
+                          }else {
+                            $msg = "<span class='error'>Not Updated .</span> ";
+                        return $msg; // return some message 
+                          } 
+            }
         
     }
 
