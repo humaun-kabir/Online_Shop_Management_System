@@ -132,13 +132,20 @@
 		<?Php	} ?>
 
 		<?php
-			$cmrId = Session::get("cmrId");
-
 			$getPd = $pd->getCompareProduct($cmrId);
 			if($getPd){
 		?>
 		
 	    <li><a href="compare.php">Compare</a> </li>
+
+	    <?php } ?>
+
+		<?php
+			$checkwlist = $pd->checkWlistData($cmrId);
+			if($checkwlist){
+		?>
+		
+	    <li><a href="wishlist.php">WishList</a> </li>
 
 	    <?php } ?>
 

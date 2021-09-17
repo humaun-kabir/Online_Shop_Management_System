@@ -328,6 +328,12 @@
               } 
            }
         }
+
+        public function checkWlistData($cmrId){
+            $query = "SELECT * FROM tbl_wlist WHERE cmrId = '$cmrId' ORDER BY id DESC";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
     
 
