@@ -1,6 +1,12 @@
 <?php include 'inc/header.php'; ?>
 
+<?php 
+    if(isset($_GET['delwlistid'])){
+        $productId = $_GET['delwlistid'];
+        $delWlist = $pd->delWlistData($cmrId,$productId);
+    }
 
+?>
 
  <div class="main">
     <div class="content">

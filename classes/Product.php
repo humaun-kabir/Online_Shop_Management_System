@@ -334,6 +334,11 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        public function delWlistData($cmrId,$productId){
+            $delquery = "DELETE FROM tbl_wlist WHERE cmrId = '$cmrId' AND productId = '$productId' ";
+            $deldata = $this->db->delete($delquery);
+        }
     }
     
 
