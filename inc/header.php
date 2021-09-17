@@ -80,7 +80,9 @@
 
 				  <?php
 					if(isset($_GET['cid'])){
+						$cmrId = Session::get("cmrId");
 						$delDate = $ct->delCustomerCart();
+						$delComp = $pd->delCompareData($cmrId);
 						Session::destroy();
 					}
 
@@ -128,8 +130,18 @@
 	  			<li><a href="profile.php">Profile</a></li>
 
 		<?Php	} ?>
+
+		<?php
+			$cmrId = Session::get("cmrId");
+
+			$getPd = $pd->getCompareProduct($cmrId);
+			if($getPd){
+		?>
 		
-	  <li><a href="compare.php">Compare</a> </li>
+	    <li><a href="compare.php">Compare</a> </li>
+
+	    <?php } ?>
+
 	  <li><a href="contact.php">Contact</a> </li>
 	  <div class="clear"></div>
 	</ul>

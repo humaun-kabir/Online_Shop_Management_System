@@ -290,6 +290,11 @@
             return $result;
        
         }
+
+        public function delCompareData($cmrId){
+            $delquery = "DELETE FROM tbl_compare WHERE cmrId = '$cmrId' ";
+            $deldata = $this->db->delete($delquery);
+        }
     }
     
 

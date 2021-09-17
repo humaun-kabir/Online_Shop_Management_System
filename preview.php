@@ -69,13 +69,17 @@
 
 				?>
 
+				<?php 
+				$login = Session::get("cuslogin");
+				if($login == true){ ?>
+
 				<div class="add-cart">
 					<form action="" method="post">
 						<input type="hidden" class="buyfield" name="productId" value="<?php echo $result['productId']; ?>"/>
 						<input type="submit" class="buysubmit" name="compare" value="Add to Compare"/>
 					</form>	
 				</div>
-
+				<?php } ?>
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>
