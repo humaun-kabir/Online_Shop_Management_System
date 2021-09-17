@@ -1,9 +1,8 @@
 <?php include 'inc/header.php'; ?>
 
 <?php
-    if(!isset($_GET['proid']) || $_GET['proid'] == NULL){ // Get this id from catadd.php and take this on $id variable.
-        echo "<script>window.location = '404.php'; </script>"; // we transfer to catlist.php page
-    }else {
+    if(isset($_GET['proid'])){ // Get this id from catadd.php and take this on $id variable.
+        
         $id = $_GET['proid']; // Get this id from catadd.php and take this on $id variable.
     }
 ?>
@@ -11,12 +10,20 @@
 
 <?php
     
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
         $quantity = $_POST['quantity']; // here i add our input filed name 
 
         $addCart = $ct->addToCart($quantity,$id); // with this Category object i access one method. 
     }
 
+?>
+
+<?php
+    $cmrId = Session::get("cmrId");
+	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['compare'])){
+		$productId = $_POST['productId'];
+		$insertCom = $pd->inserCompareDate($productId, $cmrId);
+	}
 ?>
 
  <div class="main">
@@ -55,10 +62,18 @@
 
 				?>
 				</span>
+				<?php
+				if(isset($insertCom)){
+					echo $insertCom;
+				}
+
+				?>
 
 				<div class="add-cart">
-					<a class="buysubmit" href="?wlistid=<?php echo $result['productId']; ?>">Save to List</a> | 
-					<a class="buysubmit" href="?comid=<?php echo $result['productId']; ?>">Add to Compare</a>				
+					<form action="" method="post">
+						<input type="hidden" class="buyfield" name="productId" value="<?php echo $result['productId']; ?>"/>
+						<input type="submit" class="buysubmit" name="compare" value="Add to Compare"/>
+					</form>	
 				</div>
 
 			</div>
