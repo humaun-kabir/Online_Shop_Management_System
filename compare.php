@@ -6,7 +6,7 @@
     <div class="content">
     	<div class="cartoption">		
 			<div class="cartpage">
-			    	<h2>Compare Product</h2>
+			    	<h2>Compare</h2>
 					
 
 						<table class="tblone">
@@ -20,11 +20,13 @@
 							</tr>
 
 							<?php
-								$getPro = $ct->getCartProduct();
-								if($getPro){
+		                        $cmrId = Session::get("cmrId");
+
+								$getPd = $pd->getCompareProduct($cmrId);
+								if($getPd){
 									$i = 0;
 									
-									while($result = $getPro->fetch_assoc()){
+									while($result = $getPd->fetch_assoc()){
 										$i++;
 							?>
 							<tr>
@@ -46,9 +48,7 @@
 						<div class="shopleft">
 							<a href="index.php"> <img src="images/shop.png" alt="" /></a>
 						</div>
-						<div class="shopright">
-							<a href="payment.php"> <img src="images/check.png" alt="" /></a>
-						</div>
+						
 					</div>
     	</div>  	
        <div class="clear"></div>

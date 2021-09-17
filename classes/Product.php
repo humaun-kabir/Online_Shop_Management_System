@@ -283,6 +283,13 @@
            }
          
        }
+
+       public function getCompareProduct($cmrId){
+            $query = "SELECT * FROM tbl_compare WHERE cmrId = '$cmrId'";
+            $result = $this->db->select($query);
+            return $result;
+       
+        }
     }
     
 
