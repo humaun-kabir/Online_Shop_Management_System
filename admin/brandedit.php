@@ -40,8 +40,6 @@
                     if($getBrand){
                         while($result = $getBrand->fetch_assoc()){
 
-                        
-
                 ?>
 
                  <form action="" method="POST">

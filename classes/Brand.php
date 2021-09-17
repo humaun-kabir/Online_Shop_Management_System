@@ -85,6 +85,12 @@
                 return $msg;
             }
         }
+
+        public function getcopyById(){
+            $query = "SELECT * FROM tbl_copy ";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
 
 ?>
