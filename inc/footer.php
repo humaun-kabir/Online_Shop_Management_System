@@ -40,18 +40,35 @@
 						<div class="social-icons">
 							<h4>Follow Us</h4>
 					   		  <ul>
-							      <li class="facebook"><a href="#" target="_blank"> </a></li>
-							      <li class="twitter"><a href="#" target="_blank"> </a></li>
-							      <li class="googleplus"><a href="#" target="_blank"> </a></li>
-							      <li class="contact"><a href="#" target="_blank"> </a></li>
-							      <div class="clear"></div>
+								 <?php
+										$brand = new Brand();
+										$getsocial = $brand->getsocialById(); // With category object i create one method with also id
+										if($getsocial){
+											while($result = $getsocial->fetch_assoc()){
+
+								?>
+							      <li class="facebook"><a href="<?php echo $result['fb']; ?>" target="_blank"> </a></li>
+							      <li class="twitter"><a href="<?php echo $result['tw']; ?>" target="_blank"> </a></li>
+							      <li class="googleplus"><a href="<?php echo $result['ln']; ?>" target="_blank"> </a></li>
+							      <li class="contact"><a href="<?php echo $result['gp']; ?>" target="_blank"> </a></li>
+							     <?php } } ?> 
+								  <div class="clear"></div>
 						     </ul>
    	 					</div>
 				</div>
 			</div>
 			<div class="copy_right">
-				<p>easy Learning project &amp; All rights Reseverd </p>
-		   </div>
+				
+			<?php
+            $brand = new Brand();
+            $getcopy = $brand->getcopyById(); // With category object i create one method with also id
+            if($getcopy){
+                while($result = $getcopy->fetch_assoc()){
+
+        	?>
+				<p><?php echo $result['copyright']; ?></p>
+		   <?php } } ?>
+			</div>
      </div>
     </div>
     <script type="text/javascript">

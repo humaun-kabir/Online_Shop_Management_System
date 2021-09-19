@@ -2,9 +2,24 @@
 <?php include 'inc/sidebar.php';?>
 <?php include '../classes/Brand.php'; ?>
 
+<?php
+    $brand = new Brand(); // Create Object for Category Class and take this with one variable as $cat
+    
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $copyRight = $_POST['copyright']; // here i add our input filed name 
+
+        $updatefooter = $brand->footerUpdate($copyRight); // with this Category object i access one method. 
+    }
+?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Update Copyright Text</h2>
+        <?php
+            if(isset($updatefooter)){
+                echo $updatefooter;
+            }
+        ?>
         <div class="block copyblock"> 
 
         <?php

@@ -19,8 +19,6 @@
 
         $updateBrand = $brand->brandUpdate($brandName,$id); // with this Category object i access one method. 
     }
-
-
 ?>
 
 

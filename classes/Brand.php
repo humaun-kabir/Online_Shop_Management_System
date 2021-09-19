@@ -91,6 +91,72 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        public function footerUpdate($copyRight){
+            $copyRight = $this->fm->validation($copyRight); // Validation for special Characters             
+            $copyRight = mysqli_real_escape_string($this->db->link, $copyRight); // Validation for mysqli   
+            
+            if(empty($copyRight)){
+                $msg = "<span class='error'>Footer field must not be empty.</span>"; // validation for empty 
+                return $msg;
+            }else{
+                $query = "UPDATE tbl_copy
+                SET 
+                copyRight = '$copyRight'
+                WHERE id = '1' ";
+
+                $update_row = $this->db->update($query);
+                if($update_row){
+                    $msg = "<span class='success'>Footer Updated Succesfully.</span>";
+                    return $msg;
+                }else{
+                    $msg = "<span class='error'>Footer Not Updated.</span>";
+                    return $msg;
+                }
+            }
+        }
+
+        public function getsocialById(){
+            $query = "SELECT * FROM tbl_copy ";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function socialUpdate($fb,$tw,$ln,$gp){
+            $fb = $this->fm->validation($fb); // Validation for special Characters             
+            $tw = $this->fm->validation($tw); // Validation for special Characters             
+            $ln = $this->fm->validation($ln); // Validation for special Characters             
+            $gp = $this->fm->validation($gp); // Validation for special Characters             
+            
+            $fb = mysqli_real_escape_string($this->db->link, $fb); // Validation for mysqli   
+            $tw = mysqli_real_escape_string($this->db->link, $tw); // Validation for mysqli   
+            $ln = mysqli_real_escape_string($this->db->link, $ln); // Validation for mysqli   
+            $gp = mysqli_real_escape_string($this->db->link, $gp); // Validation for mysqli   
+            
+
+            if(empty($fb)){
+                $msg = "<span class='error'>Social field must not be empty.</span>"; // validation for empty 
+                return $msg;
+            }else{
+                $query = "UPDATE tbl_social
+                SET 
+                fb = '$fb',
+                tw = '$tw',
+                ln = '$ln',
+                gp = '$gp'
+
+                WHERE id = '1' ";
+
+                $update_row = $this->db->update($query);
+                if($update_row){
+                    $msg = "<span class='success'>Social Updated Succesfully.</span>";
+                    return $msg;
+                }else{
+                    $msg = "<span class='error'>Social Not Updated.</span>";
+                    return $msg;
+                }
+        }
     }
+}
 
 ?>
