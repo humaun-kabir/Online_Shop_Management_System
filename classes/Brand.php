@@ -157,6 +157,12 @@
                 }
         }
     }
+
+    public function getAllimage(){
+        $query = "SELECT * FROM tbl_image ";
+            $result = $this->db->select($query);
+            return $result;
+    }
 }
 
 ?>
