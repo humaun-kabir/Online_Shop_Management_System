@@ -339,6 +339,12 @@
             $delquery = "DELETE FROM tbl_wlist WHERE cmrId = '$cmrId' AND productId = '$productId' ";
             $deldata = $this->db->delete($delquery);
         }
+
+        public function productByOnlySearch($search){
+            $query = "SELECT * FROM tbl_product WHERE productName LIKE '%search%' OR body LIKE '%search%' ";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
     
 
