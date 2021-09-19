@@ -163,6 +163,38 @@
             $result = $this->db->select($query);
             return $result;
     }
+
+    public function sliderInsert($data, $file){
+        $title = mysqli_real_escape_string($this->db->link, $data['title']);
+            
+            $permited = array('jpg','png','jpeg','gif');
+            $file_name = $file['image']['name'];
+            $file_size = $file['image']['size'];
+            $file_temp = $file['image']['tmp_name'];
+
+            $div = explode('.',$file_name);
+            $file_ext = strtolower(end($div));
+            $unique_image = substr(md5(time()),0,10).'.'.$file_ext;
+            $uploaded_image = "upload/".$unique_image;
+
+            if($title == '' ){
+                $msg = "<span class='error'>Field must not be empty.</span>";
+                    return $msg;
+            }else{
+                move_uploaded_file($file_temp, $uploaded_image );
+                $query = "INSERT INTO tbl_image(title, image)
+                        VALUES('$title', '$uploaded_image')";
+
+                        $inserted_row = $this->db->insert($query);
+                        if($inserted_row){
+                            $msg = "<span class='success'>Slider Inserted Succesfully.</span>";
+                            return $msg;
+                        }else{
+                            $msg = "<span class='error'>Slider Not Inserted.</span>";
+                            return $msg;
+                        }
+            }
+    }
 }
 
 ?>
